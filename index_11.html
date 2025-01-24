@@ -1,0 +1,406 @@
+<!--
+    The MIT License
+
+    Copyright (c) 2018, Etherscan.
+
+    Permission is hereby granted, free of charge, to any person obtaining a copy
+    of this software and associated documentation files (the "Software"), to deal
+    in the Software without restriction, including without limitation the rights
+    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+    copies of the Software, and to permit persons to whom the Software is
+    furnished to do so, subject to the following conditions:
+
+    The above copyright notice and this permission notice shall be included in
+    all copies or substantial portions of the Software.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+    FITNESS FOR A PARTICULAR PURPOSE AND NONINFINFRINGEMENT. IN NO EVENT SHALL THE
+    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+    THE SOFTWARE.
+--><!DOCTYPE html><html id="html" xmlns="http://www.w3.org/1999/xhtml" data-bs-theme="light" data-scrapbook-source="https://etherscan.io/writecontract/index?m=light&amp;v=21.10.1.1&amp;a=0x4DfD742c6E5e28F11Bcbcf6c5e51A965d15ea315&amp;n=mainnet"><head>
+    <meta charset="UTF-8">
+    <meta name="fortmatic-site-verification" content="q6QiF6hQJIdeCSLw">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="all.css">
+    <link rel="stylesheet" href="theme.min.css">
+    <link rel="shortcut icon" href="favicon3.ico">
+    <style type="text/css">
+        html {
+            font-size: 13px;
+        }
+
+        body {
+            font-family: Helvetica Neue,Helvetica,Arial,sans-serif;
+        }
+
+        a {
+            color: #3498db;
+        }
+
+            a:hover {
+                color: #1d6fa5;
+            }
+
+        .text-primary {
+            color: #3498db !important;
+        }
+
+        .btn-link:hover {
+            color: #1d6fa5;
+            text-decoration: none;
+        }
+
+        .card-btn-arrow {
+            display: inline-block;
+            color: #3498db;
+            margin-top: 5px;
+        }
+
+        #overlay {
+            /*background: #ffffff;*/
+            background: rgba(255,255,255,.7);
+            color: #666666;
+            position: fixed;
+            height: 100%;
+            width: 100%;
+            z-index: 5000;
+            top: 0;
+            left: 0;
+            float: left;
+            text-align: center;
+            padding-top: 10%;
+            display: none;
+        }
+
+        .accordion-arrow {
+            display: inline-block;
+            transition: 0.3s ease-in-out;
+        }
+
+        .collapsed .accordion-arrow {
+            transform: rotate(-90deg);
+        }
+
+        body.dark-mode {
+            color: #a2b9c8;
+            background-color: #112641 !important;
+        }
+
+            body.dark-mode .bg-light {
+                background-color: #01263f !important
+            }
+
+            body.dark-mode .text-secondary {
+                color: #7295ac !important
+            }
+
+
+            body.dark-mode .border, body.dark-mode .border-bottom, body.dark-mode .border-top, body.dark-mode .u-ver-divider--left:after, body.dark-mode .u-ver-divider:after {
+                border-color: #013558 !important
+            }
+
+            body.dark-mode p {
+                color: #a2b9c8
+            }
+
+            body.dark-mode .modal-footer, body.dark-mode .modal-header {
+                border-color: #013558
+            }
+
+            body.dark-mode .card {
+                border-color: transparent;
+                background-color: #012137 !important;
+                box-shadow: 0 .5rem 1.2rem rgba(4,76,124,.2)
+            }
+
+            body.dark-mode .card-header {
+                background-color: #012137 !important;
+                border-color: #013558
+            }
+
+            body.dark-mode .card-header-title {
+                color: #a2b9c8
+            }
+
+            body.dark-mode .card-btn {
+                color: #a2b9c8
+            }
+
+            body.dark-mode .form-control::-webkit-input-placeholder {
+                color: #577c93
+            }
+
+            body.dark-mode .form-control::-moz-placeholder {
+                color: #577c93
+            }
+
+            body.dark-mode .form-control::-ms-input-placeholder {
+                color: #577c93
+            }
+
+            body.dark-mode .form-control::placeholder {
+                color: #577c93
+            }
+
+            body.dark-mode .link-hover-secondary, body.dark-mode .text-dark, body.dark-mode .text-link, body.dark-mode .text-muted, body.dark-mode .text-white {
+                color: #a2b9c8 !important
+            }
+
+            body.dark-mode .custom-select, body.dark-mode .form-control, body.dark-mode .input-group-text {
+                color: #a2b9c8 !important;
+                border-color: #013558 !important;
+                background-color: #01263f !important
+            }
+
+            body.dark-mode .btn-primary, body.dark-mode .btn-primary:not([href]), body.dark-mode .btn-primary:not([href]):not([href]):not(:disabled):not(.disabled) {
+                color: rgba(255, 255, 255, 0.8);
+                background-color: rgba(52, 152, 219, 0.2);
+                border-color: rgba(52, 152, 219, 0.2);
+            }
+
+                body.dark-mode .btn-primary:focus, body.dark-mode .btn-primary:hover, body.dark-mode .btn-primary:not([href]):focus, body.dark-mode .btn-primary:not([href]):hover, body.dark-mode .btn-primary:not([href]):not([href]):not(:disabled):not(.disabled):focus, body.dark-mode .btn-primary:not([href]):not([href]):not(:disabled):not(.disabled):hover {
+                    color: white;
+                    background-color: #3498db;
+                }
+
+            body.dark-mode .alert-secondary {
+                color: #c0d3df !important;
+                background-color: #132a47 !important;
+                border-color: #18365b !important;
+            }
+
+        .badge-red {
+            background: #e74c3c;
+        }
+
+        .badge-green {
+            background: rgb(0,128,0);
+        }
+
+        .walletconnect-modal__base {
+            top: 53% !important;
+        }
+
+        body.dark-mode .close {
+            color: rgba(192, 211, 223, 0.7);
+            text-shadow: none;
+        }
+
+            body.dark-mode .close:hover {
+                color: #c0d3df !important;
+            }
+
+        body.dark-mode .modal-content {
+            background-color: #132a47;
+        }
+
+        body.dark-mode .modal-header,
+        body.dark-mode .modal-footer {
+            border-color: #18365b;
+        }
+
+        /* Custom Button (Wallet) */
+        .btn-custom-wallet {
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+            border: 1px solid #d5dae2;
+        }
+
+            .btn-custom-wallet:hover {
+                color: #3498db;
+                border-color: #3498db;
+            }
+        /* Custom Badge (Wallet) */
+        .badge-custom-wallet {
+            padding: 0.5rem 0.75rem;
+            border-radius: 5rem;
+            font-size: 10px;
+        }
+
+        .permalink_text {
+            position: absolute;
+            top: 5px;
+            right: 29px;
+            color: #fff;
+            /* background-color: #e9e9e9;
+            border-color: #d1d1d1;*/
+        }
+
+        body.dark-mode .permalink_text {
+            /*background-color: #003152;
+            border-color: #012137;*/
+        }
+
+        .tooltip-inner {
+            padding: 0.25rem 0.5rem;
+            color: #fff;
+            text-align: center;
+            background-color: #21325b !important;
+            border-radius: 0.35rem;
+        }
+
+        .tooltip.show {
+            opacity: 1 !important;
+        }
+
+        .bs-tooltip-top .arrow::before, .bs-tooltip-auto[x-placement^="top"] .arrow::before {
+            top: 0;
+            border-width: 0.4rem 0.4rem 0;
+            border-top-color: #21325b !important;
+        }
+
+        body .tooltip {
+            position: absolute;
+            z-index: 1070;
+            display: block;
+            margin: 0;
+            font-family: Helvetica,Arial,sans-serif;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 1.5;
+            text-align: left;
+            text-align: start;
+            text-decoration: none;
+            text-shadow: none;
+            text-transform: none;
+            letter-spacing: normal;
+            word-break: normal;
+            word-spacing: normal;
+            white-space: normal;
+            line-break: auto;
+            font-size: 0.875rem;
+            word-wrap: break-word;
+            opacity: 0;
+        }
+
+        .badge-soft-secondary {
+            color: #77838f;
+            background-color: rgba(119,131,143,.1);
+        }
+
+        .blink-container {
+            width: 100%;
+        }
+
+        .blinking-bg {
+            border-width: 1px;
+            border-style: solid;
+            border-color: #007bff !important;
+            border-radius: 0.25rem;
+        }
+
+        .border-primary_r {
+            border-color: #007bff;
+        }
+
+        .copy-button-position {
+            position: absolute;
+            top: 5px;
+            right: 58px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Spinner --><div id="overlay" class="text-center py-10 "><div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div><div class="small text-muted mt-1">Loading</div></div><!-- End Spinner -->
+    <div id="header">
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-3"><p class="mb-0"><button type="button" class="btn btn-white focus-shadow-0" id="connectStatus" fdprocessedid="lw7h9pr"><i id="connector" class="fa fa-circle text-danger me-1"></i>Connect to Web3</button></p><span><a href="#" class="mr-1 expandCollapseAllButton">[Expand all]</a><a class="ms-3 me-3" href="#">[Reset]</a></span></div><div class="alert alert-dark">
+                                   <p class="mb-0 alert-text"><i class="far fa-info-circle"></i> Descriptions included below are taken from the contract source code <a href="https://docs.soliditylang.org/en/v0.8.11/natspec-format.html" target="_blank">NatSpec</a>. Etherscan does not provide any guarantees on their safety or accuracy.</p>
+                                   </div></div>
+    <div class="card shadow-none mb-3"><div class="card-header bg-light card-collapse p-0" role="tab" id="heading1" style="position: relative;"><a role="button" class="btn btn-link btn-block link-dark text-decoration-none d-flex justify-content-between align-items-center text-start py-2 collapsed" data-bs-toggle="collapse" data-bs-parent="#accordion" href="#collapse1" aria-expanded="true" aria-controls="collapse1">1. approve (0x095ea7b3)<span class="accordion-arrow"><i class="fas fa-arrow-down small"></i></span></a><a class="btn btn-sm btn-icon me-1 permalink_text link-dark" href="javascript:" data-bs-toggle="tooltip" data-bs-placement="top" title="Copy Permalink"><i class="far fa-link btn-icon__inner"></i></a><a class="btn btn-sm btn-icon me-1 copy-button-position link-dark" href="javascript:" data-bs-toggle="tooltip" data-bs-placement="top" title="Copy Method Name"><i class="far fa-copy fa-fw"></i></a></div><div id="collapse1" class="collapse writeContractFunction" role="tabpanel" aria-labelledby="heading1"><div class="card-body"><p class="text-muted font-italic fs-sm">See {IERC20-approve}. Requirements: - `spender` cannot be the zero address.</p><form> <div class="form-group"><label>spender (address) </label><input type="text" class="form-control form-control-xs" name="input_1" id="input_1_1" data-bs-type="address" placeholder="&nbsp; spender (address)" value=""></div> <div class="form-group"><label>amount (uint256) </label><button type="button" class="btn btn-sm btn-secondary ms-2 mb-2" id="btnConvert_1_2" data-bs-toggle="modal" data-bs-target="#myModalConvert" title="Add Zeroes"><i class="fas fa-plus"></i></button><input type="text" class="form-control form-control-xs" name="input_1" id="input_1_2" data-bs-type="uint256" placeholder="&nbsp; amount (uint256)" value=""></div><button type="button" class="write-btn btn btn-primary border disabled">Write</button> <div style="display:inline" class="write-msg text-success input_1"></div></form></div></div></div><div class="card shadow-none mb-3"><div class="card-header bg-light card-collapse p-0" role="tab" id="heading2" style="position: relative;"><a role="button" class="btn btn-link btn-block link-dark text-decoration-none d-flex justify-content-between align-items-center text-start py-2 collapsed" data-bs-toggle="collapse" data-bs-parent="#accordion" href="#collapse2" aria-expanded="true" aria-controls="collapse2">2. blacklist (0x404e5129)<span class="accordion-arrow"><i class="fas fa-arrow-down small"></i></span></a><a class="btn btn-sm btn-icon me-1 permalink_text link-dark" href="javascript:" data-bs-toggle="tooltip" data-bs-placement="top" title="Copy Permalink"><i class="far fa-link btn-icon__inner"></i></a><a class="btn btn-sm btn-icon me-1 copy-button-position link-dark" href="javascript:" data-bs-toggle="tooltip" data-bs-placement="top" title="Copy Method Name"><i class="far fa-copy fa-fw"></i></a></div><div id="collapse2" class="collapse writeContractFunction" role="tabpanel" aria-labelledby="heading2"><div class="card-body"><form> <div class="form-group"><label>_address (address) </label><input type="text" class="form-control form-control-xs" name="input_2" id="input_2_1" data-bs-type="address" placeholder="&nbsp; _address (address)" value=""></div> <div class="form-group"><label>_isBlacklisting (bool) </label><input type="text" class="form-control form-control-xs" name="input_2" id="input_2_2" data-bs-type="bool" placeholder="&nbsp; _isBlacklisting (bool)" value=""></div><button type="button" class="write-btn btn btn-primary border disabled">Write</button> <div style="display:inline" class="write-msg text-success input_2"></div></form></div></div></div><div class="card shadow-none mb-3"><div class="card-header bg-light card-collapse p-0" role="tab" id="heading3" style="position: relative;"><a role="button" class="btn btn-link btn-block link-dark text-decoration-none d-flex justify-content-between align-items-center text-start py-2 collapsed" data-bs-toggle="collapse" data-bs-parent="#accordion" href="#collapse3" aria-expanded="true" aria-controls="collapse3">3. burn (0x42966c68)<span class="accordion-arrow"><i class="fas fa-arrow-down small"></i></span></a><a class="btn btn-sm btn-icon me-1 permalink_text link-dark" href="javascript:" data-bs-toggle="tooltip" data-bs-placement="top" title="Copy Permalink"><i class="far fa-link btn-icon__inner"></i></a><a class="btn btn-sm btn-icon me-1 copy-button-position link-dark" href="javascript:" data-bs-toggle="tooltip" data-bs-placement="top" title="Copy Method Name"><i class="far fa-copy fa-fw"></i></a></div><div id="collapse3" class="collapse writeContractFunction" role="tabpanel" aria-labelledby="heading3"><div class="card-body"><form> <div class="form-group"><label>value (uint256) </label><button type="button" class="btn btn-sm btn-secondary ms-2 mb-2" id="btnConvert_3_1" data-bs-toggle="modal" data-bs-target="#myModalConvert" title="Add Zeroes"><i class="fas fa-plus"></i></button><input type="text" class="form-control form-control-xs" name="input_3" id="input_3_1" data-bs-type="uint256" placeholder="&nbsp; value (uint256)" value=""></div><button type="button" class="write-btn btn btn-primary border disabled">Write</button> <div style="display:inline" class="write-msg text-success input_3"></div></form></div></div></div><div class="card shadow-none mb-3"><div class="card-header bg-light card-collapse p-0" role="tab" id="heading4" style="position: relative;"><a role="button" class="btn btn-link btn-block link-dark text-decoration-none d-flex justify-content-between align-items-center text-start py-2 collapsed" data-bs-toggle="collapse" data-bs-parent="#accordion" href="#collapse4" aria-expanded="true" aria-controls="collapse4">4. decreaseAllowance (0xa457c2d7)<span class="accordion-arrow"><i class="fas fa-arrow-down small"></i></span></a><a class="btn btn-sm btn-icon me-1 permalink_text link-dark" href="javascript:" data-bs-toggle="tooltip" data-bs-placement="top" title="Copy Permalink"><i class="far fa-link btn-icon__inner"></i></a><a class="btn btn-sm btn-icon me-1 copy-button-position link-dark" href="javascript:" data-bs-toggle="tooltip" data-bs-placement="top" title="Copy Method Name"><i class="far fa-copy fa-fw"></i></a></div><div id="collapse4" class="collapse writeContractFunction" role="tabpanel" aria-labelledby="heading4"><div class="card-body"><p class="text-muted font-italic fs-sm">Atomically decreases the allowance granted to `spender` by the caller. This is an alternative to {approve} that can be used as a mitigation for problems described in {IERC20-approve}. Emits an {Approval} event indicating the updated allowance. Requirements: - `spender` cannot be the zero address. - `spender` must have allowance for the caller of at least `subtractedValue`.</p><form> <div class="form-group"><label>spender (address) </label><input type="text" class="form-control form-control-xs" name="input_4" id="input_4_1" data-bs-type="address" placeholder="&nbsp; spender (address)" value=""></div> <div class="form-group"><label>subtractedValue (uint256) </label><button type="button" class="btn btn-sm btn-secondary ms-2 mb-2" id="btnConvert_4_2" data-bs-toggle="modal" data-bs-target="#myModalConvert" title="Add Zeroes"><i class="fas fa-plus"></i></button><input type="text" class="form-control form-control-xs" name="input_4" id="input_4_2" data-bs-type="uint256" placeholder="&nbsp; subtractedValue (uint256)" value=""></div><button type="button" class="write-btn btn btn-primary border disabled">Write</button> <div style="display:inline" class="write-msg text-success input_4"></div></form></div></div></div><div class="card shadow-none mb-3"><div class="card-header bg-light card-collapse p-0" role="tab" id="heading5" style="position: relative;"><a role="button" class="btn btn-link btn-block link-dark text-decoration-none d-flex justify-content-between align-items-center text-start py-2 collapsed" data-bs-toggle="collapse" data-bs-parent="#accordion" href="#collapse5" aria-expanded="true" aria-controls="collapse5">5. increaseAllowance (0x39509351)<span class="accordion-arrow"><i class="fas fa-arrow-down small"></i></span></a><a class="btn btn-sm btn-icon me-1 permalink_text link-dark" href="javascript:" data-bs-toggle="tooltip" data-bs-placement="top" title="Copy Permalink"><i class="far fa-link btn-icon__inner"></i></a><a class="btn btn-sm btn-icon me-1 copy-button-position link-dark" href="javascript:" data-bs-toggle="tooltip" data-bs-placement="top" title="Copy Method Name"><i class="far fa-copy fa-fw"></i></a></div><div id="collapse5" class="collapse writeContractFunction" role="tabpanel" aria-labelledby="heading5"><div class="card-body"><p class="text-muted font-italic fs-sm">Atomically increases the allowance granted to `spender` by the caller. This is an alternative to {approve} that can be used as a mitigation for problems described in {IERC20-approve}. Emits an {Approval} event indicating the updated allowance. Requirements: - `spender` cannot be the zero address.</p><form> <div class="form-group"><label>spender (address) </label><input type="text" class="form-control form-control-xs" name="input_5" id="input_5_1" data-bs-type="address" placeholder="&nbsp; spender (address)" value=""></div> <div class="form-group"><label>addedValue (uint256) </label><button type="button" class="btn btn-sm btn-secondary ms-2 mb-2" id="btnConvert_5_2" data-bs-toggle="modal" data-bs-target="#myModalConvert" title="Add Zeroes"><i class="fas fa-plus"></i></button><input type="text" class="form-control form-control-xs" name="input_5" id="input_5_2" data-bs-type="uint256" placeholder="&nbsp; addedValue (uint256)" value=""></div><button type="button" class="write-btn btn btn-primary border disabled">Write</button> <div style="display:inline" class="write-msg text-success input_5"></div></form></div></div></div><div class="card shadow-none mb-3"><div class="card-header bg-light card-collapse p-0" role="tab" id="heading6" style="position: relative;"><a role="button" class="btn btn-link btn-block link-dark text-decoration-none d-flex justify-content-between align-items-center text-start py-2 collapsed" data-bs-toggle="collapse" data-bs-parent="#accordion" href="#collapse6" aria-expanded="true" aria-controls="collapse6">6. renounceOwnership (0x715018a6)<span class="accordion-arrow"><i class="fas fa-arrow-down small"></i></span></a><a class="btn btn-sm btn-icon me-1 permalink_text link-dark" href="javascript:" data-bs-toggle="tooltip" data-bs-placement="top" title="Copy Permalink"><i class="far fa-link btn-icon__inner"></i></a><a class="btn btn-sm btn-icon me-1 copy-button-position link-dark" href="javascript:" data-bs-toggle="tooltip" data-bs-placement="top" title="Copy Method Name"><i class="far fa-copy fa-fw"></i></a></div><div id="collapse6" class="collapse writeContractFunction" role="tabpanel" aria-labelledby="heading6"><div class="card-body"><p class="text-muted font-italic fs-sm">Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner.</p><form><button type="button" class="write-btn btn btn-primary border disabled">Write</button> <div style="display:inline" class="write-msg text-success input_6"></div></form></div></div></div><div class="card shadow-none mb-3"><div class="card-header bg-light card-collapse p-0" role="tab" id="heading7" style="position: relative;"><a role="button" class="btn btn-link btn-block link-dark text-decoration-none d-flex justify-content-between align-items-center text-start py-2 collapsed" data-bs-toggle="collapse" data-bs-parent="#accordion" href="#collapse7" aria-expanded="true" aria-controls="collapse7">7. setRule (0x3aa633aa)<span class="accordion-arrow"><i class="fas fa-arrow-down small"></i></span></a><a class="btn btn-sm btn-icon me-1 permalink_text link-dark" href="javascript:" data-bs-toggle="tooltip" data-bs-placement="top" title="Copy Permalink"><i class="far fa-link btn-icon__inner"></i></a><a class="btn btn-sm btn-icon me-1 copy-button-position link-dark" href="javascript:" data-bs-toggle="tooltip" data-bs-placement="top" title="Copy Method Name"><i class="far fa-copy fa-fw"></i></a></div><div id="collapse7" class="collapse writeContractFunction" role="tabpanel" aria-labelledby="heading7"><div class="card-body"><form> <div class="form-group"><label>_limited (bool) </label><input type="text" class="form-control form-control-xs" name="input_7" id="input_7_1" data-bs-type="bool" placeholder="&nbsp; _limited (bool)" value=""></div> <div class="form-group"><label>_uniswapV2Pair (address) </label><input type="text" class="form-control form-control-xs" name="input_7" id="input_7_2" data-bs-type="address" placeholder="&nbsp; _uniswapV2Pair (address)" value=""></div> <div class="form-group"><label>_maxHoldingAmount (uint256) </label><button type="button" class="btn btn-sm btn-secondary ms-2 mb-2" id="btnConvert_7_3" data-bs-toggle="modal" data-bs-target="#myModalConvert" title="Add Zeroes"><i class="fas fa-plus"></i></button><input type="text" class="form-control form-control-xs" name="input_7" id="input_7_3" data-bs-type="uint256" placeholder="&nbsp; _maxHoldingAmount (uint256)" value=""></div> <div class="form-group"><label>_minHoldingAmount (uint256) </label><button type="button" class="btn btn-sm btn-secondary ms-2 mb-2" id="btnConvert_7_4" data-bs-toggle="modal" data-bs-target="#myModalConvert" title="Add Zeroes"><i class="fas fa-plus"></i></button><input type="text" class="form-control form-control-xs" name="input_7" id="input_7_4" data-bs-type="uint256" placeholder="&nbsp; _minHoldingAmount (uint256)" value=""></div><button type="button" class="write-btn btn btn-primary border disabled">Write</button> <div style="display:inline" class="write-msg text-success input_7"></div></form></div></div></div><div class="card shadow-none mb-3"><div class="card-header bg-light card-collapse p-0" role="tab" id="heading8" style="position: relative;"><a role="button" class="btn btn-link btn-block link-dark text-decoration-none d-flex justify-content-between align-items-center text-start py-2 collapsed" data-bs-toggle="collapse" data-bs-parent="#accordion" href="#collapse8" aria-expanded="true" aria-controls="collapse8">8. transfer (0xa9059cbb)<span class="accordion-arrow"><i class="fas fa-arrow-down small"></i></span></a><a class="btn btn-sm btn-icon me-1 permalink_text link-dark" href="javascript:" data-bs-toggle="tooltip" data-bs-placement="top" title="Copy Permalink"><i class="far fa-link btn-icon__inner"></i></a><a class="btn btn-sm btn-icon me-1 copy-button-position link-dark" href="javascript:" data-bs-toggle="tooltip" data-bs-placement="top" title="Copy Method Name"><i class="far fa-copy fa-fw"></i></a></div><div id="collapse8" class="collapse writeContractFunction" role="tabpanel" aria-labelledby="heading8"><div class="card-body"><p class="text-muted font-italic fs-sm">See {IERC20-transfer}. Requirements: - `recipient` cannot be the zero address. - the caller must have a balance of at least `amount`.</p><form> <div class="form-group"><label>recipient (address) </label><input type="text" class="form-control form-control-xs" name="input_8" id="input_8_1" data-bs-type="address" placeholder="&nbsp; recipient (address)" value=""></div> <div class="form-group"><label>amount (uint256) </label><button type="button" class="btn btn-sm btn-secondary ms-2 mb-2" id="btnConvert_8_2" data-bs-toggle="modal" data-bs-target="#myModalConvert" title="Add Zeroes"><i class="fas fa-plus"></i></button><input type="text" class="form-control form-control-xs" name="input_8" id="input_8_2" data-bs-type="uint256" placeholder="&nbsp; amount (uint256)" value=""></div><button type="button" class="write-btn btn btn-primary border disabled">Write</button> <div style="display:inline" class="write-msg text-success input_8"></div></form></div></div></div><div class="card shadow-none mb-3"><div class="card-header bg-light card-collapse p-0" role="tab" id="heading9" style="position: relative;"><a role="button" class="btn btn-link btn-block link-dark text-decoration-none d-flex justify-content-between align-items-center text-start py-2 collapsed" data-bs-toggle="collapse" data-bs-parent="#accordion" href="#collapse9" aria-expanded="true" aria-controls="collapse9">9. transferFrom (0x23b872dd)<span class="accordion-arrow"><i class="fas fa-arrow-down small"></i></span></a><a class="btn btn-sm btn-icon me-1 permalink_text link-dark" href="javascript:" data-bs-toggle="tooltip" data-bs-placement="top" title="Copy Permalink"><i class="far fa-link btn-icon__inner"></i></a><a class="btn btn-sm btn-icon me-1 copy-button-position link-dark" href="javascript:" data-bs-toggle="tooltip" data-bs-placement="top" title="Copy Method Name"><i class="far fa-copy fa-fw"></i></a></div><div id="collapse9" class="collapse writeContractFunction" role="tabpanel" aria-labelledby="heading9"><div class="card-body"><p class="text-muted font-italic fs-sm">See {IERC20-transferFrom}. Emits an {Approval} event indicating the updated allowance. This is not required by the EIP. See the note at the beginning of {ERC20}. Requirements: - `sender` and `recipient` cannot be the zero address. - `sender` must have a balance of at least `amount`. - the caller must have allowance for ``sender``'s tokens of at least `amount`.</p><form> <div class="form-group"><label>sender (address) </label><input type="text" class="form-control form-control-xs" name="input_9" id="input_9_1" data-bs-type="address" placeholder="&nbsp; sender (address)" value=""></div> <div class="form-group"><label>recipient (address) </label><input type="text" class="form-control form-control-xs" name="input_9" id="input_9_2" data-bs-type="address" placeholder="&nbsp; recipient (address)" value=""></div> <div class="form-group"><label>amount (uint256) </label><button type="button" class="btn btn-sm btn-secondary ms-2 mb-2" id="btnConvert_9_3" data-bs-toggle="modal" data-bs-target="#myModalConvert" title="Add Zeroes"><i class="fas fa-plus"></i></button><input type="text" class="form-control form-control-xs" name="input_9" id="input_9_3" data-bs-type="uint256" placeholder="&nbsp; amount (uint256)" value=""></div><button type="button" class="write-btn btn btn-primary border disabled">Write</button> <div style="display:inline" class="write-msg text-success input_9"></div></form></div></div></div><div class="card shadow-none mb-3"><div class="card-header bg-light card-collapse p-0" role="tab" id="heading10" style="position: relative;"><a role="button" class="btn btn-link btn-block link-dark text-decoration-none d-flex justify-content-between align-items-center text-start py-2 collapsed" data-bs-toggle="collapse" data-bs-parent="#accordion" href="#collapse10" aria-expanded="true" aria-controls="collapse10">10. transferOwnership (0xf2fde38b)<span class="accordion-arrow"><i class="fas fa-arrow-down small"></i></span></a><a class="btn btn-sm btn-icon me-1 permalink_text link-dark" href="javascript:" data-bs-toggle="tooltip" data-bs-placement="top" title="Copy Permalink"><i class="far fa-link btn-icon__inner"></i></a><a class="btn btn-sm btn-icon me-1 copy-button-position link-dark" href="javascript:" data-bs-toggle="tooltip" data-bs-placement="top" title="Copy Method Name"><i class="far fa-copy fa-fw"></i></a></div><div id="collapse10" class="collapse writeContractFunction" role="tabpanel" aria-labelledby="heading10"><div class="card-body"><p class="text-muted font-italic fs-sm">Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner.</p><form> <div class="form-group"><label>newOwner (address) </label><input type="text" class="form-control form-control-xs" name="input_10" id="input_10_1" data-bs-type="address" placeholder="&nbsp; newOwner (address)" value=""></div><button type="button" class="write-btn btn btn-primary border disabled">Write</button> <div style="display:inline" class="write-msg text-success input_10"></div></form></div></div></div><div class="panel-group acc-v1" id="accordion" role="tablist" aria-multiselectable="true">
+    </div>
+    <div id="footer" class="me-3" style="">
+        
+    </div>
+    <input type="hidden" id="hdnInputId" value="">
+
+    <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" id="myModalConvert">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title" id="myModalLabel">Add Zeroes</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>
+                        </p><div class="input-group-prepend d-md-block">
+                            <!-- Select -->
+                            <select id="ddConvert" name="ddConvert" class="form-select form-select-lg py-2">
+                                <option selected="" value="0">Select</option>
+                                <option value="1">10⁶</option>
+                                <option value="2">10⁸</option>
+                                <option value="3">10¹⁸</option>
+                                <option value="4">Custom</option>
+                            </select>
+                            <!-- End Select -->
+                        </div>
+                        <div class="w-auto mt-2">
+                            <label id="lblValue" class="form-control form-control-lg"><span id="spanValue"></span></label>
+                            <input type="number" id="txtCustom" class="form-control form-control-lg" min="1" max="18" maxlength="2" value="">
+                            <div class="small text-muted mt-1" id="divNote">
+                                <span>Enter the number of zeroes to add. Example: 3 to add three (000) zeroes.</span>
+                            </div>
+                        </div>
+                    <p></p>
+                </div>
+                <div class="modal-footer bg-light">
+                    <button data-bs-dismiss="modal" class="btn btn-ghost-white" type="button">Cancel</button>
+                    <button class="btn btn-primary" type="button" id="btnContinueConvert">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Wallet Modal for proxy iframe -->
+    <div class="modal fade" id="WalletModalProxyIframeNew" tabindex="-1" aria-labelledby="walletModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title text-dark fw-bold" id="ProxyModalLabelNew">Connect a Wallet</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <button type="button" class="btn btn-lg btn-custom-wallet btn-block d-flex justify-content-between align-items-center">
+                        <span class="text-dark d-flex align-items-center">MetaMask <span class="badge badge-soft-secondary badge-custom-wallet ms-2">Popular</span>
+                        </span>
+                        <img width="25" src="metamask.svg" alt="">
+                    </button>
+                    <button type="button" class="btn btn-lg btn-custom-wallet btn-block d-flex justify-content-between align-items-center">
+                        <span class="text-dark">Wallet Connect</span>
+                        <img width="25" src="walletconnect.svg" alt="">
+                    </button>
+                    <button type="button" class="btn btn-lg btn-custom-wallet btn-block d-flex justify-content-between align-items-center">
+                        <span class="text-dark">Coinbase</span>
+                        <img width="25" src="coinbase.svg" alt="">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Wallet Modal -->
+
+
+
+
+
+
+
+
+
+<!-- Wallet Connect V2 2.10.5 -->
+
+  
+
+
+
+
+
+
+<div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div><div role="log" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+
+
+<span id="PING_IFRAME_FORM_DETECTION" style="display: none;"></span></body></html>
